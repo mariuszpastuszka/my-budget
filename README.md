@@ -11,3 +11,5 @@ git log --graph - rysuje graf historii
 git add . - dodaje do stage'a wszystkie zmienione/nowe pliki (wtedy można dopiero comitować)
 git commit -m "co się zmienia" - zapis zmian do repozytorium
 git branch -a - wyświetl wszystkie branche
+git checkout nazwa_brancha - przełączenia na inny branch
+git checkout -b nazwa_brancha - przełączenie na właśnie tworzony/nowy branch
