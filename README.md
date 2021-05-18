@@ -15,3 +15,5 @@ git branch -a - wyświetl wszystkie branche
 git checkout nazwa_brancha - przełączenia na inny branch
 git checkout -b nazwa_brancha - przełączenie na właśnie tworzony/nowy branch
 git push nazwa-repo nazwa-brancha np. git push origin master - wypchnięcie zmian do nazwa-repo z brancha nazwa-brancha
+git remote - pokaż zdalne repozytoria
+git remote -v - jw. + adresy
