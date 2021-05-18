@@ -4,6 +4,7 @@ This is my first budget project based on Java and Spring.
 - przed mergem/pull/przełączeniem branchy drzewo robocze powinno być czyste
 - usuwamy tylko branch na którym aktualnie się nie znajdujemy (nie podcina się nałęzi na której się siedzi:)
 - po mergu zawsze zweryfikujmy czy wszyskto działa (ale tylko jeśli musimy rozwiązywac konflikty)
+- zmergowany feature-branch można bezpiecznie usunąć
 
 ### Git - przydatne komendy
 git status - co się dzieje w repo
