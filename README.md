@@ -23,3 +23,15 @@ git remote -v - jw. + adresy
 Controller
 Service
 Repository
+
+### REST
+Create  - Post
+Read    - Get
+Update  - Patch (partial update), Put (whole update)
+Delete  - Delete
+
+### How to implement Rest
+1. Define @RestController
+2. Add @Service to controller (service has business logic:)) - use dependency injection
+3. Add JpaRepository to Service class if access to data source is necessary - use dependency injection
+4. Use correct Http methods
