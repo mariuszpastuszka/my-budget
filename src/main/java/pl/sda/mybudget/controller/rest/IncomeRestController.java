@@ -1,8 +1,7 @@
 package pl.sda.mybudget.controller.rest;
 
 import org.springframework.web.bind.annotation.*;
-import pl.sda.mybudget.model.Income;
-import pl.sda.mybudget.model.enumeration.IncomeType;
+import pl.sda.mybudget.dto.IncomeDto;
 import pl.sda.mybudget.service.IncomeService;
 
 import java.time.LocalDate;
@@ -20,7 +19,7 @@ public class IncomeRestController {
 
     // Select all
     @GetMapping
-    List<Income> getAllIncomes() {
+    List<IncomeDto> getAllIncomes() {
         return incomeService.findAllIncomes();
     }
 
@@ -29,13 +28,13 @@ public class IncomeRestController {
     // /rest/incomes/2
     // /rest/incomes/n - id of income goes here
     @GetMapping("/{id}")
-    Income findById(@PathVariable("id") Long idik) {
+    IncomeDto findById(@PathVariable("id") Long idik) {
         return incomeService.findIncomeById(idik);
     }
 
     // send json to save inside request body
     @PostMapping
-    Income createNewIncome(@RequestBody Income incomeToSave) {
+    IncomeDto createNewIncome(@RequestBody IncomeDto incomeToSave) {
         return incomeService.saveIncome(incomeToSave);
     }
 }

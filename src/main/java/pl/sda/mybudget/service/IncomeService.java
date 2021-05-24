@@ -1,13 +1,13 @@
 package pl.sda.mybudget.service;
 
-import pl.sda.mybudget.model.Income;
+import pl.sda.mybudget.dto.IncomeDto;
 
 import java.util.List;
 
 public interface IncomeService {
-    List<Income> findAllIncomes();
+    List<IncomeDto> findAllIncomes();
 
-    Income findIncomeById(Long idik);
+    IncomeDto findIncomeById(Long idik);
 
-    Income saveIncome(Income incomeToSave);
+    IncomeDto saveIncome(IncomeDto incomeToSave);
 }

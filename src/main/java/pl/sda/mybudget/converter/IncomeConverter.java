@@ -1,9 +1,11 @@
 package pl.sda.mybudget.converter;
 
+import org.springframework.stereotype.Component;
 import pl.sda.mybudget.dto.IncomeDto;
 import pl.sda.mybudget.model.Income;
 import pl.sda.mybudget.model.enumeration.IncomeType;
 
+@Component
 public class IncomeConverter implements DataConverter<Income, IncomeDto> {
     @Override
     public IncomeDto fromEntity(Income entity) {
