@@ -1,5 +1,6 @@
 package pl.sda.mybudget.controller.rest;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.mybudget.dto.IncomeDto;
 import pl.sda.mybudget.service.IncomeService;
@@ -36,5 +37,17 @@ public class IncomeRestController {
     @PostMapping
     IncomeDto createNewIncome(@RequestBody IncomeDto incomeToSave) {
         return incomeService.saveIncome(incomeToSave);
+    }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Void> deleteIncomeById(@PathVariable("id") Long id) {
+        boolean deleted = incomeService.deleteIncomeById(id);
+
+        ResponseEntity<Void> result = ResponseEntity.notFound().build();
+        if (deleted) {
+            result = ResponseEntity.noContent().build();
+        }
+
+        return result;
     }
 }

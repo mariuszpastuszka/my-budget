@@ -2,6 +2,7 @@ package pl.sda.mybudget.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.sda.mybudget.converter.IncomeConverter;
 import pl.sda.mybudget.dto.IncomeDto;
 import pl.sda.mybudget.repository.IncomeRepository;
@@ -46,5 +47,19 @@ public class IncomeServiceImpl implements IncomeService {
         log.info("trying to save: [{}]", incomeToSave);
         var entityToSave = incomeConverter.fromDto(incomeToSave);
         return incomeConverter.fromEntity(incomeRepository.save(entityToSave));
+    }
+
+    @Override
+    @Transactional // only for databases
+    public boolean deleteIncomeById(Long id) {
+        log.info("trying to delete income with id: [{}]", id);
+
+        boolean result = false;
+        if (incomeRepository.existsById(id)) {
+            incomeRepository.deleteById(id);
+            result = true;
+        }
+
+        return result;
     }
 }
