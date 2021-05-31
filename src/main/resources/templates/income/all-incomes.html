@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <div>All incomes:)</div>
+<div>All incomes:)</div>
+<p>My all incomes</p>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Kwota w groszach</td>
+        <td>Data przychodu</td>
+        <td>Zródło</td>
+        <td>Typ</td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    for (Income income: incomes) {}-->
+    <tr th:each="income: ${incomes}">
+        <td th:text="${income.id}">1</td>
+        <td th:text="${income.amountInPolishGrosz}">100 000</td>
+        <td th:text="${income.incomeDate}">2020-09-18</td>
+        <td th:text="${income.incomeSource}">Od mamy</td>
+        <td th:text="${income.incomeType}">MOPS</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
