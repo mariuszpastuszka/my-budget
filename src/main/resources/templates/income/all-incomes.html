@@ -27,8 +27,8 @@
         <td th:text="${income.incomeDate}">2020-09-18</td>
         <td th:text="${income.incomeSource}">Od mamy</td>
         <td th:text="${income.incomeType}">MOPS</td>
-        <td><a href="#" th:href="@{'/income/delete/' + ${income.id}}">Edytuj</a></td>
-        <td><a href="#">Usuń</a></td>
+        <td><a href="#" th:href="@{'/incomes/delete/' + ${income.id}}">Usuń</a></td>
+        <td><a href="#">Edytuj</a></td>
     </tr>
     </tbody>
 </table>

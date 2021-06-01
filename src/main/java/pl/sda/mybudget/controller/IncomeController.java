@@ -1,13 +1,17 @@
 package pl.sda.mybudget.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.sda.mybudget.service.IncomeService;
 
-@RequestMapping("/income")
+@RequestMapping("/incomes")
 @Controller
+@Slf4j
+// TODO: error checking
 public class IncomeController {
 
     private final IncomeService incomeService;
@@ -25,5 +29,14 @@ public class IncomeController {
 
         // III - template engine takes data and template name and produces html
         return "income/all-incomes";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteIncomeById(@PathVariable("id") Long id) {
+        log.info("trying to delete income by id: [{}]", id);
+
+        incomeService.deleteIncomeById(id);
+
+        return "redirect:/incomes/all-incomes";
     }
 }
