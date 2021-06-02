@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.sda.mybudget.dto.IncomeDto;
 import pl.sda.mybudget.service.IncomeService;
 
 @RequestMapping("/incomes")
@@ -37,6 +39,21 @@ public class IncomeController {
 
         incomeService.deleteIncomeById(id);
 
+        return "redirect:/incomes/all-incomes";
+    }
+
+    @GetMapping("/add-form")
+    public String showAddForm() {
+        log.info("showing income add form");
+
+        return "income/new-income-form";
+    }
+
+    @PostMapping("/save")
+    public String saveIncome(IncomeDto incomeToSave) {
+        log.info("saving new income: [{}]", incomeToSave);
+
+        incomeService.saveIncome(incomeToSave);
         return "redirect:/incomes/all-incomes";
     }
 }

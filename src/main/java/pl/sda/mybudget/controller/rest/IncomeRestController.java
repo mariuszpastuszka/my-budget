@@ -6,9 +6,9 @@ import pl.sda.mybudget.dto.IncomeDto;
 import pl.sda.mybudget.service.IncomeService;
 
 import java.net.URI;
-import java.time.LocalDate;
 import java.util.List;
 
+// TODO: edit
 @RestController
 @RequestMapping("/rest/incomes")
 public class IncomeRestController {

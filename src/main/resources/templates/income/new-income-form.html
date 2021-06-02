@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New income</title>
+</head>
+<body>
+    <h2>Adding new income</h2>
+    <form action="#" th:action="@{/incomes/save}" method="post">
+        <label for="fname">Kwota:</label><br>
+        <input type="text" id="fname" name="amountInPolishGrosz" value="100"><br>
+        <label for="lname">Dzień wypłaty:</label><br>
+        <input type="text" id="lname" name="incomeDate" value="2021-05-31"><br>
+        <label for="source">Zródło:</label><br>
+        <input type="text" id="source" name="incomeSource" value="testiowa"><br>
+        <label for="type">Zródło:</label><br>
+        <input type="text" id="type" name="incomeType" value="MOPS"><br>
+        <input type="submit" value="Zapisz">
+    </form>
+    <br>
+    <a href="#" th:href="@{/home}">Home page</a>
+</body>
+</html>

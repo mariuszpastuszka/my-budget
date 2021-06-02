@@ -5,6 +5,8 @@ This is my first budget project based on Java and Spring.
 - usuwamy tylko branch na którym aktualnie się nie znajdujemy (nie podcina się nałęzi na której się siedzi:)
 - po mergu zawsze zweryfikujmy czy wszyskto działa (ale tylko jeśli musimy rozwiązywac konflikty)
 - zmergowany feature-branch można bezpiecznie usunąć
+- komit tymczasowy oznaczmy tagiem [WIP] - work in progress
+- możemy go skasować przez opcje reset soft lub mix (ale nie hard:))
 
 ### Git - przydatne komendy
 git status - co się dzieje w repo
