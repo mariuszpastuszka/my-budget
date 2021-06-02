@@ -43,8 +43,9 @@ public class IncomeController {
     }
 
     @GetMapping("/add-form")
-    public String showAddForm() {
+    public String showAddForm(Model model) {
         log.info("showing income add form");
+        model.addAttribute("existing", new IncomeDto(null, 0, null, null, null));
 
         return "income/new-income-form";
     }
