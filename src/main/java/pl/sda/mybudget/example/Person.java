@@ -38,5 +38,22 @@ public class Person {
 //        }) // Person -> name (String)
         .map(person -> person.getName()) // Stream<String>
         .forEach(name -> System.out.println("Name: " + name));
+
+        var peopleStream = persons.stream();
+        peopleStream.forEach(person -> System.out.println(person));
+        // you can use stream only once!!!
+//        peopleStream.forEach(person -> System.out.println(person));
+
+        persons.stream()
+//                .forEach(person -> System.out.println(person));
+                .forEach(System.out::println);
+
+        persons.stream()
+//                .map(person -> person.getName())
+                .map(Person::getName);
+
+        persons.stream()
+//                .filter(person -> MyFilter.isChild(person));
+                .filter(MyFilter::isChild);
     }
 }
