@@ -6,15 +6,15 @@
 </head>
 <body>
     <h2>Adding new income</h2>
-    <form action="#" th:action="@{/incomes/save}" method="post">
+    <form action="#" th:action="@{/incomes/save}" method="post" th:object="${existing}">
         <label for="fname">Kwota:</label><br>
-        <input type="text" id="fname" name="amountInPolishGrosz" value="100"><br>
+        <input type="text" id="fname" name="amountInPolishGrosz" value="100" th:value="${existing.amountInPolishGrosz}"><br>
         <label for="lname">Dzień wypłaty:</label><br>
-        <input type="text" id="lname" name="incomeDate" value="2021-05-31"><br>
+        <input type="text" id="lname" name="incomeDate" value="2021-05-31" th:value="${existing.incomeDate}"><br>
         <label for="source">Zródło:</label><br>
-        <input type="text" id="source" name="incomeSource" value="testiowa"><br>
+        <input type="text" id="source" name="incomeSource" value="testiowa" th:value="${existing.incomeSource}"><br>
         <label for="type">Zródło:</label><br>
-        <input type="text" id="type" name="incomeType" value="MOPS"><br>
+        <input type="text" id="type" name="incomeType" value="MOPS" th:value="${existing.incomeType}"><br>
         <input type="submit" value="Zapisz">
     </form>
     <br>

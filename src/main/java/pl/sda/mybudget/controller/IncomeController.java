@@ -49,6 +49,17 @@ public class IncomeController {
         return "income/new-income-form";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editIncome(@PathVariable("id") Long id,
+                             Model model) {
+        log.info("trying to edit item with id: [{}]", id);
+
+        var existingIncome = incomeService.findIncomeById(id);
+        model.addAttribute("existing", existingIncome);
+
+        return "income/new-income-form";
+    }
+
     @PostMapping("/save")
     public String saveIncome(IncomeDto incomeToSave) {
         log.info("saving new income: [{}]", incomeToSave);
