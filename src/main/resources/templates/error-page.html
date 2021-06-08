@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error page</title>
+</head>
+<body>
+    <p>Some unexpected exception has occurred:):):)</p>
+    <p>Exception message: <span th:text="${errorDescription}"></span></p>
+    <br>
+    <p><a href="#" th:href="/home">Please, go back to home page</a></p>
+</body>
+</html>
