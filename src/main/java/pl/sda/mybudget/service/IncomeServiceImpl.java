@@ -5,11 +5,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sda.mybudget.converter.IncomeConverter;
 import pl.sda.mybudget.dto.IncomeDto;
+import pl.sda.mybudget.exception.ReplaceIncomeException;
 import pl.sda.mybudget.repository.IncomeRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 @Service
 @Slf4j
@@ -44,8 +47,9 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Override
     public IncomeDto saveIncome(IncomeDto incomeToSave) {
-        log.info("trying to save: [{}]", incomeToSave);
+        log.info("trying to save dto: [{}]", incomeToSave);
         var entityToSave = incomeConverter.fromDto(incomeToSave);
+        log.info("converted entity to save: [{}]", entityToSave);
         return incomeConverter.fromEntity(incomeRepository.save(entityToSave));
     }
 
@@ -61,5 +65,18 @@ public class IncomeServiceImpl implements IncomeService {
         }
 
         return result;
+    }
+
+    @Override
+    @Transactional
+    public IncomeDto replaceIncome(IncomeDto incomeToReplace) {
+        log.info("trying to replace income with object: [{}]", incomeToReplace);
+
+        Long incomeId = incomeToReplace.getId();
+        if (isNull(incomeId) || !incomeRepository.existsById(incomeId)) {
+            throw new ReplaceIncomeException(String.format("Cannot replace income with given id: [%d]!!!", incomeId));
+        }
+
+        return saveIncome(incomeToReplace);
     }
 }

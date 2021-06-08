@@ -53,4 +53,13 @@ public class IncomeRestController {
 
         return result;
     }
+
+    // edit - replace
+    @PutMapping
+    ResponseEntity<IncomeDto> replaceIncome(@RequestBody IncomeDto incomeToReplace) {
+        var updated = incomeService.replaceIncome(incomeToReplace);
+        return ResponseEntity.ok(updated);
+    }
+
+//    @PatchMapping
 }

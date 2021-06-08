@@ -12,4 +12,6 @@ public interface IncomeService {
     IncomeDto saveIncome(IncomeDto incomeToSave);
 
     boolean deleteIncomeById(Long id);
+
+    IncomeDto replaceIncome(IncomeDto incomeToReplace);
 }
