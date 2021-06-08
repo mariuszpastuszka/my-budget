@@ -7,11 +7,12 @@ import pl.sda.mybudget.dto.ErrorResponse;
 import pl.sda.mybudget.exception.ReplaceIncomeException;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler(ReplaceIncomeException.class)
+    @ExceptionHandler({ReplaceIncomeException.class, NoSuchElementException.class})
     ErrorResponse handleException(Exception exception) {
         return new ErrorResponse(LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST.value(),
