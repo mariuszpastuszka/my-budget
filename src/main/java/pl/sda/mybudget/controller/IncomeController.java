@@ -16,6 +16,9 @@ import pl.sda.mybudget.service.IncomeService;
 // TODO: error checking
 public class IncomeController {
 
+    private static final String EXISTING = "existing";
+    private static final String CURRENT_OPERATION = "currentOperation";
+
     private final IncomeService incomeService;
 
     public IncomeController(final IncomeService incomeService) {
@@ -45,9 +48,10 @@ public class IncomeController {
     @GetMapping("/add-form")
     public String showAddForm(Model model) {
         log.info("showing income add form");
-        model.addAttribute("existing", new IncomeDto(null, 0, null, null, null));
+        model.addAttribute(EXISTING, new IncomeDto(null, 0, null, null, null));
+        model.addAttribute(CURRENT_OPERATION, "Adding");
 
-        return "income/new-income-form";
+        return "income/add-edit-income-form";
     }
 
     @GetMapping("/edit/{id}")
@@ -56,9 +60,10 @@ public class IncomeController {
         log.info("trying to edit item with id: [{}]", id);
 
         var existingIncome = incomeService.findIncomeById(id);
-        model.addAttribute("existing", existingIncome);
+        model.addAttribute(EXISTING, existingIncome);
+        model.addAttribute(CURRENT_OPERATION, "Editing");
 
-        return "income/new-income-form";
+        return "income/add-edit-income-form";
     }
 
     @PostMapping("/save")

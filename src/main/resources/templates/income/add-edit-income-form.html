@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New income</title>
+    <title th:text="${currentOperation} + ' new income'">... new income</title>
 </head>
 <body>
-    <h2>Adding new income</h2>
+    <h2><span th:text="${currentOperation}">...</span> new income</h2>
     <form action="#" th:action="@{/incomes/save}" method="post" th:object="${existing}">
         <input type="hidden" name="id" th:value="${existing.id}">
         <label for="fname">Kwota:</label><br>
