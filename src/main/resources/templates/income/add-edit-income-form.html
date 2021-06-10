@@ -7,15 +7,15 @@
 <body>
     <h2><span th:text="${currentOperation}">...</span> new income</h2>
     <form action="#" th:action="@{/incomes/save}" method="post" th:object="${existing}">
-        <input type="hidden" name="id" th:value="${existing.id}">
+        <input type="hidden" name="id" th:value="*{id}">
         <label for="fname">Kwota:</label><br>
-        <input type="text" id="fname" name="amountInPolishGrosz" value="100" th:value="${existing.amountInPolishGrosz}"><br>
+        <input type="text" id="fname" name="amountInPolishGrosz" value="100" th:value="*{amountInPolishGrosz}"><br>
         <label for="lname">Dzień wypłaty:</label><br>
-        <input type="text" id="lname" name="incomeDate" value="2021-05-31" th:value="${existing.incomeDate}"><br>
+        <input type="text" id="lname" name="incomeDate" value="2021-05-31" th:value="*{incomeDate}"><br>
         <label for="source">Zródło:</label><br>
-        <input type="text" id="source" name="incomeSource" value="testiowa" th:value="${existing.incomeSource}"><br>
-        <label for="type">Zródło:</label><br>
-        <input type="text" id="type" name="incomeType" value="MOPS" th:value="${existing.incomeType}"><br>
+        <input type="text" id="source" name="incomeSource" value="testiowa" th:value="*{incomeSource}"><br>
+        <label for="type">Typ:</label><br>
+        <input type="text" id="type" name="incomeType" value="MOPS" th:value="*{incomeType}"><br>
         <input type="submit" value="Zapisz">
     </form>
     <br>
