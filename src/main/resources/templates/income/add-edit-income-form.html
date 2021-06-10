@@ -15,7 +15,11 @@
         <label for="source">Zródło:</label><br>
         <input type="text" id="source" name="incomeSource" value="testiowa" th:value="*{incomeSource}"><br>
         <label for="type">Typ:</label><br>
-        <input type="text" id="type" name="incomeType" value="MOPS" th:value="*{incomeType}"><br>
+<!--        <input type="text" id="type" name="incomeType" value="MOPS" th:value="*{incomeType}"><br>-->
+        <select id="type" name="incomeType">
+            <option th:each="type: ${incomeTypes}" th:selected="${type.name == existing.incomeType}" th:value="${type.name}" th:text="${type.description}" value="MOPS">MOPS</option>
+        </select>
+        <br>
         <input type="submit" value="Zapisz">
     </form>
     <br>

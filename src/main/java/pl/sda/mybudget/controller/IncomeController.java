@@ -8,16 +8,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.sda.mybudget.dto.IncomeDto;
+import pl.sda.mybudget.model.enumeration.IncomeType;
 import pl.sda.mybudget.service.IncomeService;
+
+import java.util.Arrays;
 
 @RequestMapping("/incomes")
 @Controller
 @Slf4j
-// TODO: error checking
 public class IncomeController {
 
     private static final String EXISTING = "existing";
     private static final String CURRENT_OPERATION = "currentOperation";
+    private static final String INCOME_TYPES = "incomeTypes";
 
     private final IncomeService incomeService;
 
@@ -50,6 +53,8 @@ public class IncomeController {
         log.info("showing income add form");
         model.addAttribute(EXISTING, new IncomeDto(null, 0, null, null, null));
         model.addAttribute(CURRENT_OPERATION, "Adding");
+        var types = Arrays.asList(IncomeType.values());
+        model.addAttribute(INCOME_TYPES, types);
 
         return "income/add-edit-income-form";
     }
@@ -62,6 +67,8 @@ public class IncomeController {
         var existingIncome = incomeService.findIncomeById(id);
         model.addAttribute(EXISTING, existingIncome);
         model.addAttribute(CURRENT_OPERATION, "Editing");
+        var types = Arrays.asList(IncomeType.values());
+        model.addAttribute(INCOME_TYPES, types);
 
         return "income/add-edit-income-form";
     }
