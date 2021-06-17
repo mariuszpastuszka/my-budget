@@ -41,7 +41,7 @@ public class MailScheduler {
         this.delayFromConfig = delayFromConfig;
     }
 
-    @Scheduled(fixedDelayString = "#{mailScheduler.delayFromConfig}")
+    @Scheduled(initialDelay = 5000, fixedDelayString = "#{mailScheduler.delayFromConfig}")
     public void sendEmails() {
         log.info("trying to send...");
 
