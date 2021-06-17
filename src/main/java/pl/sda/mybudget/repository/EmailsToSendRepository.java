@@ -12,6 +12,7 @@ public interface EmailsToSendRepository extends JpaRepository<EmailsToSend, Long
 
     @Query(nativeQuery = false,
             value = """
+         select emts
          from EmailsToSend emts
          where emts.sendTime is null
          """)
